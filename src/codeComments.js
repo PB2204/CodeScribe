@@ -1,17 +1,18 @@
-function parseCodeComments(code, language) {
-    let commentSyntax;
+function parseCodeComments(code, languageId) {
+    let commentRegex;
 
-    switch (language) {
-        case 'javascript':
-            commentSyntax = /\/\/.*|\/\*[\s\S]*?\*\//g;
-            break;
-        case 'python':
-            commentSyntax = /#.*|\'\'\'[\s\S]*?\'\'\'|\"\"\"[\s\S]*?\"\"\"/g;
-            break;
-        default:
-            throw new Error(`Unsupported language: ${language}`);
+    if (languageId === 'javascript') {
+        commentRegex = /\/\/.*|\/\*[\s\S]*?\*\//g;
+    } else if (languageId === 'python') {
+        commentRegex = /#.*/g;
+    } else {
+        return [];
     }
 
-    const comments = code.match(commentSyntax);
+    const comments = code.match(commentRegex);
     return comments || [];
 }
+
+module.exports = {
+    parseCodeComments
+};
