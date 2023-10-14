@@ -1,0 +1,43 @@
+{
+    "name": "codescribe",
+    "displayName": "CodeScribe",
+    "description": "A Visual Studio Code extension for generating documentation from code comments.",
+    "version": "1.0.0",
+    "author": "Pabitra Banerjee",
+    "publisher": "Pabitra Banerjee",
+    "engines": {
+        "vscode": "^1.63.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pb2204/CodeScribe.git"
+    },
+    "homepage": "https://github.com/pb2204/CodeScribe",
+    "icon": "images/icon.png",
+    "activationEvents": ["onCommand:codeScribe.parseComments"],
+    "main": "src/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "codeScribe.parseComments",
+                "title": "Parse Code Comments"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "codeScribe.parseComments",
+                    "group": "navigation",
+                    "when": "editorLangId == javascript"
+                }
+            ]
+        }
+    },
+    "devDependencies": {
+        "typescript": "^4.5.2"
+    }
+}
