@@ -5,6 +5,8 @@ function parseCodeComments(code, languageId) {
         commentRegex = /\/\/.*|\/\*[\s\S]*?\*\//g;
     } else if (languageId === 'python') {
         commentRegex = /#.*/g;
+    }else if (languageId === 'html') {
+        commentRegex = /<!--[\s\S]*?-->/g;  // HTML comments: <!-- ... -->
     } else {
         return [];
     }
